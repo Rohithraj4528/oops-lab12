@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+class Number{
+private:
+int value;
+public:
+Number(int val){
+value=val;
+}
+Number operator-(){
+ return Number(-value);
+ }
+ void display(){
+ cout<<"value:"<<value<<endl;
+ }
+ };
+ int main(){
+ Number num1(10);
+ Number num2=-num1;
+ num1.display();
+ num2.display();
+  return 0;
+  }
