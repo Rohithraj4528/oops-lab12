@@ -1,0 +1,40 @@
+#include<iostream>
+using namespace std;
+class Arthimetic{
+public:
+int add(int a,int b){
+return a+b;
+}
+int subtract(int a,int b){
+ return a-b;
+ }
+ };
+ class multiplication{
+ public:
+int multiply(int a,int b){
+ return a*b;
+ }
+ };
+ class Division{
+  public:
+   float divide(float a,float b){
+   return a/b;
+   }
+   };
+   class Calculator:public Arthimetic,public multiplication,public Division{
+   public:
+  void performoperations(int a,int b){
+ cout<<"Addition:"<<add(a,b)<<endl;
+ cout<<"Subtraction:"<<subtract(a,b)<<endl;
+ cout<<"Multiplication:"<<multiply(a,b)<<endl;
+ cout<<"Division:"<<divide(a,b)<<endl;
+ }
+ };
+ int main(){
+  int num1,num2;
+  cout<<"Enter two numbers:";
+  cin>>num1>>num2;
+  Calculator calculator;
+   calculator.performoperations(num1,num2);
+   return 0;
+   }
