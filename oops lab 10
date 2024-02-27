@@ -1,0 +1,45 @@
+#include<iostream>
+#include<fstream>
+#include<ctime>
+using namespace std;
+void writeTimeToFile(const string&filename)
+{
+	ofstream file(filename,ios::binary);
+	if(file.is_open())
+	{
+		time_t currenttime=time(nullptr);
+		file.write((char*)&currenttime,sizeof(time_t));
+		file.close();
+		cout<<"time has been written to the file."<<endl;
+	}
+	else{
+		cout<<"failed to open the file for writing."<<endl;
+	}
+}
+void readTimefromFile(const string&filename)
+{
+	ifstream file(filename,ios::binary);
+	if(file.is_open())
+	{
+		time_t storedtime;
+		file.read((char*)&storedtime,sizeof(time_t));
+		if(file)
+		{
+		 string timestring=ctime(&storedtime);
+		 cout<<"time read from the file:"<<timestring<<endl;
+		}
+		else{
+			cout<<"failed to read the time from the file."<<endl;
+		}
+		file.close();
+	}
+	else{
+		cout<<"failed to open the file for reading."<<endl;
+	}
+}
+int main(){
+	string fileName="time.bin";
+	writeTimeToFile(fileName);
+        readTimefromFile(fileName);
+	return 0;
+}
